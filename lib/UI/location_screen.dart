@@ -8,6 +8,7 @@ class LocationScreen extends StatelessWidget{
       body: Column(
         children: <Widget>[
           Padding(
+            padding: const EdgeInsets.all(10.0),
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(), hintText: 'Enter location'),
