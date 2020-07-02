@@ -1,15 +1,33 @@
 import 'package:flutter/cupertino.dart';
+import 'package:restaurant_finder/BLoC/bloc.dart';
 
-class BlocProvider extends StatefulWidget {
+class BlocProvider<T extends Bloc> extends StatefulWidget {
+  final Widget child;
+  final T bloc;
+
+  const BlocProvider({Key key, @required this.bloc, @required this.child})
+      : super(key : key);
+
+
+  static T of<T extends Bloc>(BuildContext context){
+    final type = _providerType<BlocProvider<T>>();
+    final BlocProvider<T> provider = context.findAncestorWidgetOfExactType();
+    return provider.bloc;
+  }
+
+  static Type _providerType<T>() => T;
+
   @override
-  _BlocProviderState createState() => _BlocProviderState();
+  State createState() => _BlocProviderState();
 }
 
 class _BlocProviderState extends State<BlocProvider> {
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('Text'),
-    );
+  Widget build(BuildContext context) => widget.child;
+
+  @override
+  void dispose() {
+    widget.bloc.dispose();
+    super.dispose();
   }
 }
