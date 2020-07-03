@@ -3,6 +3,7 @@ import 'package:restaurant_finder/BLoC/bloc_provider.dart';
 import 'package:restaurant_finder/BLoC/location_bloc.dart';
 import 'package:restaurant_finder/DataLayer/location.dart';
 import 'package:restaurant_finder/UI/location_screen.dart';
+import 'package:restaurant_finder/UI/restaurant_screen.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class MainScreen extends StatelessWidget {
         if (location == null){
           return LocationScreen();
         }
-        return Container();
+        return RestaurantScreen(location: location);
       }
     );
   }

@@ -48,7 +48,7 @@ class LocationScreen extends StatelessWidget{
           return Center(child: Text('Enter a Location'));
         }
 
-        if (results.isEmpty()){
+        if (results.isEmpty){
           return Center(child: Text('No results'));
         }
 
