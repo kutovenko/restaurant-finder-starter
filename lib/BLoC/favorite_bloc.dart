@@ -13,11 +13,17 @@ class FavoriteBloc implements Bloc {
   Stream<List<Restaurant>> get favoritesStream => _controller.stream;
 
   void toggleRestaurant(Restaurant restaurant){
+    if (_restaurants.contains(restaurant)){
+      _restaurants.remove(restaurant);
+    } else {
+      _restaurants.add(restaurant);
+    }
 
+    _controller.sink.add(_restaurants);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    _controller.close();
   }
 }
